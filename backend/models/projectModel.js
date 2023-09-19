@@ -10,8 +10,7 @@ const projectSchema = new mongoose.Schema({
     },
     jotnotes: [ {
             text: {
-                type: String,
-                required: true
+                type: String
             }
         }
     ]

@@ -23,7 +23,18 @@ const getProject = async (req,res) => {
 }
 
 const postProject = async (req,res) => {
-
+    
+    const {title, attachments, jotnotes} = req.body
+    
+    if(!title) return res.status(404).json({error: "Please fill out the Project Name!"})
+    
+    try{
+        const newProject = await Project.create({title,attachments,jotnotes})
+        
+        res.status(200).json(newProject)
+    } catch(error){
+        res.status(400).json({error: error.message})   
+    }
 }
 
 const patchProject = async (req,res) => {
