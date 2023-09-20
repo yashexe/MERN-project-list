@@ -7,6 +7,7 @@ require('dotenv').config({ path: './config/.env' });
 PORT = process.env.PORT || 3000
 
 const routes = require('./routes/projects')
+
 app.use(express.json())
 
 
@@ -21,9 +22,5 @@ app.use('/api/projects', routes)
 
 mongoose.connect(process.env.MONGO_URI)
     .then( () => {
-        app.listen(PORT, () => {
-            console.log(`Server: http://localhost:${PORT}`)
-        })
-    }).catch( (error) => {
-        console.error(error)
-    })
+        app.listen(PORT, () =>  console.log(`Server: http://localhost:${PORT}`) )
+    }).catch( error => console.error(error))
