@@ -1,23 +1,32 @@
+import { useState } from 'react';
 import {Link} from 'react-router-dom'
 
-const navigationBar = () => {
-    
+import NewProject from './newProject';
+
+const NavigationBar = () => {
+    const [popupVisible, setPopupVisible] = useState(false);
+    const [button,setButton] = useState('+')
+    const togglePopup = () => {
+        setPopupVisible(!popupVisible)
+        setButton( popupVisible ? '+':'-')
+    }
+
     return (
         <header>
             <div className="header-container">
                 <Link className="title" to="/">
                     <p className='website-title'>
-                        &lt;ProjectLister/&gt;
+                        &lt;ProjectLister /&gt;
                     </p>
                 </Link>
-                <Link className="nav" to="/">
-                    <div className='new-project'>
-                        +
-                    </div>
+                <Link className="nav">
+                    <div className='new-project' onClick={togglePopup}>
+                        {button}
+                    </div>{popupVisible && (<NewProject/>)}
                 </Link>
             </div>
         </header>
     )
 }
 
-export default navigationBar
+export default NavigationBar

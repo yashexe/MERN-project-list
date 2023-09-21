@@ -9,13 +9,11 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-
         <NavigationBar/>
-
           <div className='pages'>
             <Routes>
 
-              <Route path='/' element= {<Home/>}/>
+              <Route path='/' element= { <Home/> }/>
             
             </Routes>
           </div>
