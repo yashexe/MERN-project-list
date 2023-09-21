@@ -5,8 +5,15 @@ const navigationBar = () => {
     return (
         <header>
             <div className="header-container">
-                <Link to="/">
-                    <p className='website-title'>Project Lister</p>
+                <Link className="title" to="/">
+                    <p className='website-title'>
+                        &lt;ProjectLister/&gt;
+                    </p>
+                </Link>
+                <Link className="nav" to="/">
+                    <div className='new-project'>
+                        +
+                    </div>
                 </Link>
             </div>
         </header>

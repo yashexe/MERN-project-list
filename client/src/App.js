@@ -19,18 +19,6 @@ function App() {
             
             </Routes>
           </div>
-{/* <div className="new-project-container">
-  <p className="new-project-title">New Project</p>
-  <div className="fields">
-    <div className="project-name">Project Name</div>
-    <div className="link">Link</div>
-    <div className="description">
-      <ul>
-        Jotnotes
-      </ul>
-    </div>
-  </div>
-</div> */}
       </BrowserRouter>
     </div>
   );

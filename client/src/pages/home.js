@@ -1,16 +1,37 @@
+import { useEffect, useState } from "react"
 
-const home = () => {
+const Home = () => {
+    const [projects, setProjects] = useState(null)
 
-    const fetchData = async () => {
-        const response = await fetch('/api/projects')
-        const jsonProject = await Response.json(response)
+    useEffect( () => {
+         const fetchProject = async () => {
 
-        // if(response.ok) 
-    }
+            const response = await fetch('/api/projects') //for production "proxy": wont work
+
+            const json = await response.json()
+
+            if(response.ok) setProjects(json)
+            
+         }
+
+         fetchProject()
+    },[])
 
     return (
-       <div className="home"></div> 
+
+        <div className="home">
+
+            <div className="projects">
+                {projects && projects.map( (project) => (
+                    <p key={project._id}>
+                        <ul>
+                            <li>{project.title}</li>
+                            <li>{project.attachments}</li>
+                        </ul>
+                    </p>
+                ))}
+            </div>
+        </div>
     )
 }
-
-export default home
+export default Home

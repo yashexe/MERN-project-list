@@ -1,20 +1,31 @@
 header {
-  /* background-image: linear-gradient(black); */
-  background: linear-gradient(rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
-}
-.header-container a{
-  text-decoration: none;
-  color: black;
+  background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 
   max-width: 100%;
 }
-.header-container a p{
+.header-container {
+  display: flex;
   padding: 2.5%;
+  justify-content: space-between;
+}
+.header-container a{
+  text-decoration: none;
   color: white;
+
 }
 .website-title {
   font-size: 3em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
 }
-
+.nav {
+  padding-right: 5%;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+}
+.new-project {
+  font-size:3em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}
