@@ -134,6 +134,15 @@ li.jotnotes {
   height:50%;
   width:25%;
 
+  animation: slideIn 1s forwards;
+}
+@keyframes slideIn {
+  0% {
+    left: 100%;
+  }
+  100% {
+    left: 50%; /* Position it in the center vertically */
+  }
 }
 .new-project-form {
   height: 100%;

@@ -8,7 +8,7 @@ const NavigationBar = () => {
     const [button,setButton] = useState('+')
     const togglePopup = () => {
         setPopupVisible(!popupVisible)
-        setButton( popupVisible ? '+':'-')
+        setButton( popupVisible ? '+':'\u2212')
     }
 
     return (
