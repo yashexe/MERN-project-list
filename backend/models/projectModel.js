@@ -6,7 +6,7 @@ const projectSchema = new mongoose.Schema({
         required: true
     },
     attachments: {
-        url: String
+        type: String
     },
     jotnotes: [ {
             text: {
