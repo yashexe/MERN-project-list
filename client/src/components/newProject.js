@@ -18,11 +18,9 @@ const NewProject = () => {
                 'content-type': 'application/json'
             }
         })
-        console.log("hey",response)
         const json = await response.json()
-        if(!response.ok) {
-            setError(json.error)
-        }
+
+        if(!response.ok) setError(json.error)
 
         if(response.ok) {
             setError(null)
@@ -41,30 +39,34 @@ const NewProject = () => {
                 <form className='form-fields'>
                         <li>
                             <p>Title:</p>
-                            <input type='text'
+                            <input type='text' placeholder="Project Title"
                             value={title}
                             onChange={ (e) => setTitle(e.target.value) }
                             />
                         </li>
+
                         <li>
                             <p>Github:</p>
-                            <input type='text'
+                            <input type='text' placeholder="Github Link"
                             value={attachments}
                             onChange={ (e) => setAttachments(e.target.value) }
                             />
                         </li>
+
                         <li className='jotnote-editor'>
                             <p>Jotnotes:</p>
-                            <textarea type='text'
+                            <textarea type='text' placeholder="Description"
                             value={jotnotes}
                             onChange={ (e) => setJotnotes(e.target.value)}
                             />
                         </li>
+
                         <li>
                             <button className="new-project-button"
                             onClick={handleNewProject}>Add Project</button>
                             {error && <div className="error">{error}</div>}
                         </li>
+
                 </form>
             </div>
         </div>
