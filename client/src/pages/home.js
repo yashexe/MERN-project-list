@@ -1,49 +1,61 @@
-import { useEffect, useState } from "react"
-import githubWhite from '../assets/githubWhite.png'
-import githubBlack from '../assets/githubBlack.png'
+import { useEffect } from "react"
+import { useProjectContext } from '../hooks/useProjectsContext'
 
 import ProjectInfo from '../components/projectInfo'
 
+import githubWhite from '../assets/githubWhite.png'
+import githubBlack from '../assets/githubBlack.png'
+
 const Home = () => {
-    const [projects, setProjects] = useState(null)
-    useEffect( () => {
-         const fetchProject = async () => {
+    const { projects, dispatch } = useProjectContext();
 
-            const response = await fetch('/api/projects') //for production "proxy": wont work
-
-            if(response.ok) {
-                const json = await response.json()
-                setProjects(json)
+    useEffect(() => {
+        const fetchProject = async () => {
+            try {
+                const response = await fetch('/api/projects');
+                const json = await response.json();
+                dispatch({
+                    type: "SET_PROJECTS",
+                    payload: json
+                });
+            } catch (error) {
+                console.error("Error fetching projects:", error);
             }
-         }
-         fetchProject()
-    },[])
-    
+        };
+        fetchProject();
+    }, [dispatch]);
+
     const handleGithubIcon = (id) => {
-        const githubIconProject = projects.map( (project) => {
-            if (project._id === id) return {
-                ...project,
-                githubIcon: project.githubIcon === githubWhite ? githubBlack : githubWhite,
+        const githubIconProjects = projects.map((project) => {
+            if (project._id === id) {
+                return {
+                    ...project,
+                    githubIcon: project.githubIcon === githubWhite ? githubBlack : githubWhite,
+                };
             }
-            return project
-        })
-        setProjects(githubIconProject)
-    }
+            return project;
+        });
+        dispatch({
+            type: "SET_PROJECTS",
+            payload: githubIconProjects
+        });
+    };
+
     return (
-
         <div className="home">
-
             <div className="projects">
-                {projects && projects.map( (project) => (
+                {projects && projects.map((project) => (
                     <ProjectInfo
                         key={project._id}
                         project={project}
                         handleGithubIcon={handleGithubIcon}
                         githubBlack={githubBlack}
-                        githubWhite={githubWhite}/>
+                        githubWhite={githubWhite}
+                    />
                 ))}
             </div>
         </div>
-    )
-}
-export default Home
+    );
+};
+
+export default Home;

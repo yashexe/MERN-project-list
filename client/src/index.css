@@ -13,7 +13,7 @@ html, body {
     overflow-x: hidden;
 }
 /* CSS reset */
-div,dl,dt,dd,ul,ol,li,h1,h2,Link,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+div,dl,dt,dd,ul,ol,li,h1,h2,Link,h3,h4,h5,h6,textarea,label,input,pre,p,blockquote,th,td { 
     margin:0;
     padding:0;
 }

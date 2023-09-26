@@ -1,3 +1,6 @@
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 
@@ -14,7 +17,6 @@ header {
 }
 .website-title {
   font-size: 3em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
 }
 .nav {
@@ -30,7 +32,6 @@ header {
   user-select: none;
   
   font-size:3em;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
 
   transition: transform .5s,background-image 1s;
@@ -38,7 +39,10 @@ header {
     transform: scale(1.9);
   }
 }
-
+/* .single-project-container {
+}
+.delete-container{
+} */
 .project-text {
   color:white;
   
@@ -63,7 +67,6 @@ header {
   justify-content: space-between;
 }
 .project-title {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: bold;
   font-size:1.75em;
 }
@@ -76,38 +79,35 @@ header {
 }
 
 .github-icon {
-  /* disable highlighting */
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-
   height: 36px;
   width: 36px;
   background-size: cover;
   background-color: rgba(32, 40, 51, .25);
   border: 3px solid rgba(32, 40, 51, .25);
   border-radius: 100%;
-
   transition: transform .5s,background-image 1s;
 
   &:hover {
     background-color: rgba(220, 220, 220, 0.75);
     border: 3px solid rgba(220, 220, 220, 0.75);
-  
     animation: shake infinite 0.4s linear;
   }
 }
 @keyframes shake {
-  0%,100%{transform: rotate(22.5deg);}
-  50%{transform: rotate(-22.5deg);}
+  0%,100%{
+    transform: rotate(22.5deg);
+  } 50% {
+    transform: rotate(-22.5deg);
+  }
 }
-
 li.jotnotes {
   list-style-type: none;
 }
 .jotnotes {
   font-size:1.25em;
-
   padding-left: 25px;
 }
 .jotnotes ul li {
@@ -118,22 +118,18 @@ li.jotnotes {
 }
 
 .popup {
-  background-color: rgba(187, 178, 254, 0.25); 
+  background-color: rgba(187, 178, 254, 0.25);
   -webkit-backdrop-filter: blur(35px);
   backdrop-filter: blur(35px);
-
   top: 50%;
   left: 50%;
   transform: translate(75%, -50%);
-  z-index: 999;
   position: fixed;
-  
   border-radius: 15px;
-  overflow: hidden;
-
-  height:50%;
+  height: fit-content;
   width:25%;
-
+  padding: 10px;
+  cursor: default;
   animation: slideIn 1s forwards;
 }
 @keyframes slideIn {
@@ -144,47 +140,36 @@ li.jotnotes {
     left: 50%; /* Position it in the center vertically */
   }
 }
-.new-project-form {
-  height: 100%;
-  width: 100%;
-  padding: 15px;
-}
-.new-project-title {
-  color: white;
-  font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 2em;
-
-  text-align: center;
-}
 .form-fields {
   color: white;
   font-size: 1.5em;
-
   list-style-type: none;
   cursor:default;
 }
-.form-fields li {
-  padding-bottom: 7%;
+legend {
+  text-align: center;
+  font-weight: bold;
 }
-li input, .jotnote-editor textarea {
-  width: 80%;
-  box-sizing: border-box;
+label {
+  display: block;
+}
+input, textarea {
   border: 0;
   text-indent: 2%;
+}
+textarea {
+  resize: none;
+  word-wrap: hard;
+  max-lines: 5;
 }
 .new-project-button {
   color: white;
   font-weight: bold;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 1.75em;
-
+  font-size: 1.5em;
   text-decoration: none;
   border: none;
   border-radius: 10px;
   background-color: rgba(187, 178, 254, 0.25); 
-
-
   padding: 5px;
   margin-left: auto;
   margin-right: auto;
@@ -194,9 +179,7 @@ li input, .jotnote-editor textarea {
 .error {
   max-width:max-content;
   max-height: max-content;
-
   font-size: 0.5em;
-
   padding-left: 20%;
   padding-right: 20%;
   padding-top: 5%;

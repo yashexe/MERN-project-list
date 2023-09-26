@@ -1,7 +1,13 @@
+import trashCan from '../assets/trashCan.png'
+import { useState } from "react"
+
 const ProjectInfo = ({ project, handleGithubIcon, githubBlack, githubWhite }) => {
+    const [trashcan, setTrashCan] = useState(false);
+
 
     return (
-        <div key={project._id} className="project-text">
+        <div key={project._id} className="project-text"
+          onClick={() => setTrashCan(!trashcan)}>
             <ul>
                 <li className="project-header">
                     <p className="project-title">{project.title}</p>
@@ -15,15 +21,22 @@ const ProjectInfo = ({ project, handleGithubIcon, githubBlack, githubWhite }) =>
                             </img>
                         </a>
                     )}
-
                 </li>
-
-                <li className="jotnotes"><ul>
-                    {project.jotnotes && project.jotnotes.map( (jotnote) => (
-                        <li className="jotnote" key={jotnote._id}>{jotnote.text}</li>
-                    ))}
-                </ul></li>
+                <li className="jotnotes">
+                    <ul>
+                        {project.jotnotes && project.jotnotes.map( (jotnote) => (
+                            <li className="jotnote" key={jotnote._id}>
+                                {jotnote.text}
+                            </li>
+                        ))}
+                    </ul>
+                </li>
             </ul>
+            {trashcan && (
+                <div className="delete-container">
+                    <img src={trashCan} alt='Delete'></img>
+                </div>
+            )}
         </div>
     )
 }

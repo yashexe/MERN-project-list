@@ -1,10 +1,13 @@
 import { useState } from "react"
+import { useProjectContext } from "../hooks/useProjectsContext"
 
 const NewProject = () => {
     const [title,setTitle] = useState('')
     const [attachments,setAttachments] = useState('')
     const [jotnotes,setJotnotes] = useState([])
     const [error, setError] = useState(null)
+    const {dispatch} = useProjectContext()
+
 
     const handleNewProject = async (e) => {
         e.preventDefault()
@@ -27,7 +30,7 @@ const NewProject = () => {
             setTitle('')
             setAttachments('')
             setJotnotes([])
-
+            dispatch({type: "CREATE_PROJECT",payload: json})
             console.log(`New Workout Added: ${json}`)
         }
     }
@@ -35,10 +38,12 @@ const NewProject = () => {
     return (
         <div className='popup'>
             <div className='new-project-form'>
-                <p className="new-project-title">Add New Project!</p>
+                {/* <p className="new-project-title">Add New Project!</p> */}
                 <form className='form-fields'>
+                    <fieldset>
+                        <legend>Add a new Project!</legend>
                         <li>
-                            <p>Title:</p>
+                            <label>Title:</label>
                             <input type='text' placeholder="Project Title"
                             value={title}
                             onChange={ (e) => setTitle(e.target.value) }
@@ -46,16 +51,17 @@ const NewProject = () => {
                         </li>
 
                         <li>
-                            <p>Github:</p>
-                            <input type='text' placeholder="Github Link"
+                            <label>Github:</label>
+                            <input type='url' placeholder="Github Link"
                             value={attachments}
                             onChange={ (e) => setAttachments(e.target.value) }
                             />
                         </li>
 
                         <li className='jotnote-editor'>
-                            <p>Jotnotes:</p>
-                            <textarea type='text' placeholder="Description"
+                            <label>Jotnotes:</label>
+                            <textarea type='text' placeholder="Add up to 5 notes separated by a new line."
+                            rows='5'
                             value={jotnotes}
                             onChange={ (e) => setJotnotes(e.target.value)}
                             />
@@ -66,7 +72,7 @@ const NewProject = () => {
                             onClick={handleNewProject}>Add Project</button>
                             {error && <div className="error">{error}</div>}
                         </li>
-
+                    </fieldset>
                 </form>
             </div>
         </div>
