@@ -16,7 +16,7 @@ const NavigationBar = () => {
             <div className="header-container">
                 <Link className="title" to="/">
                     <p className='website-title'>
-                        &lt;ProjectLister /&gt;
+                        &lt;ProjectLister/&gt;
                     </p>
                 </Link>
                 <Link className="nav">

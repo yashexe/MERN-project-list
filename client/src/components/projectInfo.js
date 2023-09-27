@@ -1,9 +1,23 @@
 import trashCan from '../assets/trashCan.png'
 import { useState } from "react"
+import { useProjectContext } from '../hooks/useProjectsContext';
 
 const ProjectInfo = ({ project, handleGithubIcon, githubBlack, githubWhite }) => {
-    const [trashcan, setTrashCan] = useState(false);
+    const [trashcan, setTrashCan] = useState(false)
 
+    const {dispatch} = useProjectContext()
+
+    const handleDelete = async () => {
+        const response = await fetch('api/projects/' + project._id, {
+            method: "DELETE"
+        } )
+
+        const json = await response.json()
+
+        if(response.ok) {
+            dispatch({type: 'DELETE_PROJECT', payload: json})
+        }
+    }
 
     return (
         <div key={project._id} className="project-text"
@@ -34,7 +48,8 @@ const ProjectInfo = ({ project, handleGithubIcon, githubBlack, githubWhite }) =>
             </ul>
             {trashcan && (
                 <div className="delete-container">
-                    <img src={trashCan} alt='Delete'></img>
+                    <img src={trashCan} alt='Delete' className='trashcan'
+                      onClick={handleDelete}></img>
                 </div>
             )}
         </div>
