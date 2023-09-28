@@ -2,10 +2,15 @@ import trashCan from '../assets/trashCan.png'
 import { useState } from "react"
 import { useProjectContext } from '../hooks/useProjectsContext';
 
-const ProjectInfo = ({ project, handleGithubIcon, githubBlack, githubWhite }) => {
+import githubWhite from '../assets/githubWhite.png'
+import githubBlack from '../assets/githubBlack.png'
+
+
+
+const ProjectInfo = ({ project}) => {
     const [trashcan, setTrashCan] = useState(false)
 
-    const {dispatch} = useProjectContext()
+    const {projects, dispatch} = useProjectContext()
 
     const handleDelete = async () => {
         const response = await fetch('api/projects/' + project._id, {
@@ -18,6 +23,22 @@ const ProjectInfo = ({ project, handleGithubIcon, githubBlack, githubWhite }) =>
             dispatch({type: 'DELETE_PROJECT', payload: json})
         }
     }
+
+    const handleGithubIcon = (id) => {
+        const githubIconProjects = projects.map((project) => {
+            if (project._id === id) {
+                return {
+                    ...project,
+                    githubIcon: project.githubIcon === githubWhite ? githubBlack : githubWhite,
+                };
+            }
+            return project;
+        });
+        dispatch({
+            type: "SET_PROJECTS",
+            payload: githubIconProjects
+        });
+    };
 
     return (
         <div key={project._id} className="project-text"
