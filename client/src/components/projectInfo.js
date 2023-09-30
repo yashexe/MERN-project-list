@@ -5,8 +5,6 @@ import { useProjectContext } from '../hooks/useProjectsContext';
 import githubWhite from '../assets/githubWhite.png'
 import githubBlack from '../assets/githubBlack.png'
 
-
-
 const ProjectInfo = ({ project}) => {
     const [trashcan, setTrashCan] = useState(false)
 

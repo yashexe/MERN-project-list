@@ -38,7 +38,6 @@ const NewProject = () => {
     return (
         <div className='popup'>
             <div className='new-project-form'>
-                {/* <p className="new-project-title">Add New Project!</p> */}
                 <form className='form-fields'>
                     <fieldset>
                         <legend>Add a new Project!</legend>
@@ -49,7 +48,6 @@ const NewProject = () => {
                             onChange={ (e) => setTitle(e.target.value) }
                             />
                         </li>
-
                         <li>
                             <label>Github:</label>
                             <input type='url' placeholder="Github Link"
@@ -57,7 +55,6 @@ const NewProject = () => {
                             onChange={ (e) => setAttachments(e.target.value) }
                             />
                         </li>
-
                         <li className='jotnote-editor'>
                             <label>Jotnotes:</label>
                             <textarea type='text' placeholder="Add up to 5 notes separated by a new line."
