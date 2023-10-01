@@ -1,14 +1,17 @@
-import trashCan from '../assets/trashCan.png'
 import { useState } from "react"
 import { useProjectContext } from '../hooks/useProjectsContext';
 
 import githubWhite from '../assets/githubWhite.png'
 import githubBlack from '../assets/githubBlack.png'
+import trashCan from '../assets/trashCan.png'
+import editIcon from '../assets/editIcon.png'
+
 
 const ProjectInfo = ({ project}) => {
-    const [trashcan, setTrashCan] = useState(false)
+    const [request, setRequest] = useState(false)
 
     const {projects, dispatch} = useProjectContext()
+
 
     const handleDelete = async () => {
         const response = await fetch('api/projects/' + project._id, {
@@ -40,7 +43,7 @@ const ProjectInfo = ({ project}) => {
 
     return (
         <div key={project._id} className="project-text"
-          onClick={() => setTrashCan(!trashcan)}>
+          onClick={() => setRequest(!request)}>
             <ul>
                 <li className="project-header">
                     <p className="project-title">{project.title}</p>
@@ -65,10 +68,12 @@ const ProjectInfo = ({ project}) => {
                     </ul>
                 </li>
             </ul>
-            {trashcan && (
-                <div className="delete-container">
+            {request && (
+                <div className='request-container'>
+                    <img src={editIcon} alt='Edit' className='edit' 
+                    onClick={handleDelete} />
                     <img src={trashCan} alt='Delete' className='trashcan'
-                      onClick={handleDelete}></img>
+                        onClick={handleDelete} />
                 </div>
             )}
         </div>
