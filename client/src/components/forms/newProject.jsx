@@ -4,13 +4,19 @@ import { useProjectContext } from "../../hooks/useProjectsContext"
 const NewProject = () => {
     const [title,setTitle] = useState('')
     const [attachments,setAttachments] = useState('')
-    const [jotnotes,setJotnotes] = useState([])
+    const [description,setDescription] = useState([])
     const [error, setError] = useState(null)
     const {dispatch} = useProjectContext()
 
 
     const handleNewProject = async (e) => {
         e.preventDefault()
+
+        const jotnotes = description
+            .split('\n')
+            .slice(0, 5)
+            .filter(line => line !== '')
+            .map(line => ({text: line}) )
 
         const project = {title,attachments,jotnotes}
 
@@ -29,9 +35,8 @@ const NewProject = () => {
             setError(null)
             setTitle('')
             setAttachments('')
-            setJotnotes([])
+            setDescription('')
             dispatch({type: "CREATE_PROJECT",payload: json})
-            console.log(`New Workout Added: ${json}`)
         }
     }
 
@@ -57,10 +62,10 @@ const NewProject = () => {
                         </li>
                         <li className='jotnote-editor'>
                             <label>Jotnotes:</label>
-                            <textarea type='text' placeholder="Add up to 5 notes separated by a new line."
+                            <textarea type='text' placeholder="Add up to 5 jotnotes!"
                             rows='5'
-                            value={jotnotes}
-                            onChange={ (e) => setJotnotes(e.target.value)}
+                            value={description}
+                            onChange={ (e) => setDescription(e.target.value)}
                             />
                         </li>
 

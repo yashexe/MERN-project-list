@@ -14,6 +14,6 @@ const projectSchema = new mongoose.Schema({
             }
         }
     ]
-}, { timestamps: true }, { strict: 'throw' })
+}, { strict: 'throw' })
 
 module.exports = mongoose.model('Project', projectSchema)

@@ -54,6 +54,7 @@ header {
   align-items: center;
   text-decoration: none;
   color: white;
+
 }
 .new-project {
   /* disable highlighting */
@@ -85,10 +86,11 @@ header {
   overflow: hidden;
   box-shadow: none;
   transition: box-shadow 0.3s ease, background-color 0.3s ease;
-}
-.project-text:hover {
-  box-shadow: 0 0 6px white;
-  background-color: rgba(255, 255, 255, 0.15);
+
+  &:hover {
+    box-shadow: 0 0 6px white;
+    background-color: rgba(255, 255, 255, 0.15);
+  }
 }
 .project-header {
   padding-right: 3%;
@@ -142,9 +144,6 @@ li.jotnotes {
   font-size:1.25em;
   padding-left: 25px;
 }
-.jotnotes ul li {
-  list-style-type: none;
-}
 .jotnote {
   padding-bottom: 7px;
 }
@@ -176,6 +175,12 @@ li.jotnotes {
   padding: 10px;
   cursor: default;
   animation: slideIn 1s forwards;
+
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  &:hover {
+    background-color: rgba(56, 16, 130, 0.15);
+    backdrop-filter: blur(25px);
+  }
 }
 @keyframes slideIn {
   0% {
@@ -200,12 +205,11 @@ label {
 }
 input, textarea {
   border: 0;
-  text-indent: 2%;
+  padding: 4px;
+  width: 75%;
 }
 textarea {
   resize: none;
-  word-wrap: hard;
-  max-lines: 5;
 }
 .new-project-button {
   color: white;
@@ -218,8 +222,15 @@ textarea {
   padding: 5px;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 25px;
   display: block;
   cursor: pointer;
+
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  &:hover {
+    box-shadow: 0 0 7px white;
+    background-color: rgba(205, 184, 248, 0.5);
+  }
 }
 .error {
   max-width:max-content;

@@ -51,7 +51,7 @@ const patchProject = async (req,res) => {
         const jotnoteUpdates = jotnotes.map((jotnote) => ({ text: jotnote.text }));
       
         updatedFields.$push = { jotnotes: { $each: jotnoteUpdates } };
-      }
+    }
 
     const projectUpdate = await Project.findByIdAndUpdate({ _id: id }, updatedFields, {new: true})
 
