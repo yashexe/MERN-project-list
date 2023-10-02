@@ -1,23 +1,10 @@
 import { useState } from "react"
-import { useProjectContext } from '../hooks/useProjectsContext';
 
-import { Attachment } from "./attachment";
-
-import trashCan from '../assets/trashCan.png'
-import editIcon from '../assets/editIcon.png'
-
+import Attachment from "./attachment";
+import Requests from "./requests";
 
 const ProjectInfo = ({ project }) => {
     const [request, setRequest] = useState(false)
-    const { dispatch} = useProjectContext()
-
-    const handleDelete = async () => {
-        const response = await fetch('api/projects/' + project._id, { method: "DELETE" } )
-
-        const json = await response.json()
-
-        if(response.ok) dispatch({type: 'DELETE_PROJECT', payload: json})
-    }
 
     return (
         <div key={project._id} className="project-text"
@@ -40,12 +27,7 @@ const ProjectInfo = ({ project }) => {
                 </li>
             </ul>
             {request && (
-                <div className='request-container'>
-                    <img src={editIcon} alt='Edit' className='edit' 
-                    onClick={handleDelete} />
-                    <img src={trashCan} alt='Delete' className='trashcan'
-                        onClick={handleDelete} />
-                </div>
+                <Requests key={project._id} project={project} />
             )}
         </div>
     )

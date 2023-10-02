@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import './App.css';
 
-import NavigationBar from './components/navigationBar';
+import NavigationBar from './components/header/navigationBar';
 import Home from './pages/home'
 
 function App() {

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom'
 
-import NewProject from './newProject';
+import NewProject from '../forms/newProject';
 
 const NavigationBar = () => {
     const [popupVisible, setPopupVisible] = useState(false);

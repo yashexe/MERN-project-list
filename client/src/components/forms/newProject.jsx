@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { useProjectContext } from "../hooks/useProjectsContext"
+import { useProjectContext } from "../../hooks/useProjectsContext"
 
 const NewProject = () => {
     const [title,setTitle] = useState('')

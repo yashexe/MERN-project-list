@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { useProjectContext } from '../hooks/useProjectsContext'
 
-import ProjectInfo from '../components/projectInfo'
+import ProjectInfo from '../components/projects/projectInfo'
 
 const Home = () => {
     const { projects, dispatch } = useProjectContext();

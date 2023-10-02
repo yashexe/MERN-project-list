@@ -1,9 +1,9 @@
-import { useProjectContext } from '../hooks/useProjectsContext';
+import { useProjectContext } from '../../hooks/useProjectsContext';
 
-import githubWhite from '../assets/githubWhite.png'
-import githubBlack from '../assets/githubBlack.png'
+import githubWhite from '../../assets/githubWhite.png'
+import githubBlack from '../../assets/githubBlack.png'
 
-export const Attachment = ( {project} ) => {
+const Attachment = ( {project} ) => {
     const {projects, dispatch} = useProjectContext()
 
     const handleGithubIcon = (id) => {
@@ -33,3 +33,5 @@ export const Attachment = ( {project} ) => {
         </a>
     )
 }
+
+export default Attachment
