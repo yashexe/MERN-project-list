@@ -6,26 +6,32 @@ import githubBlack from '../../assets/githubBlack.png'
 const Attachment = ( {project} ) => {
     const {projects, dispatch} = useProjectContext()
 
-    const handleGithubIcon = (id) => {
-        const githubIconProjects = projects.map((project) => {
-            if (project._id === id) {
+    const handleGithubIcon = (event, id) => {
+        event.stopPropagation()
+
+        const githubIconProjects = projects.map( p => {
+            if (p._id === id) {
                 return {
-                    ...project,
-                    githubIcon: project.githubIcon === githubWhite ? githubBlack : githubWhite,
-                };
+                    ...p,
+                    githubIcon: p.githubIcon === githubWhite ? githubBlack : githubWhite,
+                }
             }
-            return project;
-        });
-        dispatch({
+            return p
+        })
+        dispatch( {
             type: "SET_PROJECTS",
             payload: githubIconProjects
-        });
-    };
+        })
+    }
 
     return (
-        <a className="github-icon-container" href={project.attachments}
-            onMouseEnter={() => handleGithubIcon(project._id)}
-            onMouseLeave={() => handleGithubIcon(project._id)}>
+        <a className="github-icon-container" 
+            href={project.attachments}
+            target='_blank' rel="noopener noreferrer"
+            onClick={ (event) => handleGithubIcon(event, project._id) }
+            onMouseEnter={ (event) => handleGithubIcon(event, project._id) }
+            onMouseLeave={ (event) => handleGithubIcon(event, project._id) }>
+
             <img className="github-icon"
                 src={project.githubIcon === githubWhite ? githubBlack : githubWhite}
                 alt="github">
