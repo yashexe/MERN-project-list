@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useProjectContext } from "../../hooks/useProjectsContext"
+import isValidURL from "../../utils/urlValidation"
 
 const NewProject = () => {
     const [title,setTitle] = useState('')
@@ -12,8 +13,9 @@ const NewProject = () => {
     const handleNewProject = async (e) => {
         e.preventDefault()
 
+        if(!isValidURL(attachments)) setAttachments('')
+
         const jotnotes = description
-            .split('\n')
             .slice(0, 5)
             .filter(line => line !== '')
             .map(line => ({text: line}) )
@@ -65,7 +67,7 @@ const NewProject = () => {
                             <textarea type='text' placeholder="Add up to 5 jotnotes!"
                             rows='5'
                             value={description}
-                            onChange={ (e) => setDescription(e.target.value)}
+                            onChange={ (e) => setDescription(e.target.value.split('\n'))}
                             />
                         </li>
 
