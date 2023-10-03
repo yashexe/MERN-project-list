@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { useProjectContext } from "../../hooks/useProjectsContext"
 import isValidURL from "../../utils/urlValidation"
+import toArrayObjects from "../../utils/toArrayObjects"
 
 const NewProject = () => {
     const [title,setTitle] = useState('')
@@ -15,10 +16,7 @@ const NewProject = () => {
 
         if(!isValidURL(attachments)) setAttachments('')
 
-        const jotnotes = description
-            .slice(0, 5)
-            .filter(line => line !== '')
-            .map(line => ({text: line}) )
+        const jotnotes = toArrayObjects(description)
 
         const project = {title,attachments,jotnotes}
 
@@ -44,41 +42,39 @@ const NewProject = () => {
 
     return (
         <div className='popup'>
-            <div className='new-project-form'>
-                <form className='form-fields'>
-                    <fieldset>
-                        <legend>Add a new Project!</legend>
-                        <li>
-                            <label>Title:</label>
-                            <input type='text' placeholder="Project Title"
-                            value={title}
-                            onChange={ (e) => setTitle(e.target.value) }
-                            />
-                        </li>
-                        <li>
-                            <label>Github:</label>
-                            <input type='url' placeholder="Github Link"
-                            value={attachments}
-                            onChange={ (e) => setAttachments(e.target.value) }
-                            />
-                        </li>
-                        <li className='jotnote-editor'>
-                            <label>Jotnotes:</label>
-                            <textarea type='text' placeholder="Add up to 5 jotnotes!"
-                            rows='5'
-                            value={description}
-                            onChange={ (e) => setDescription(e.target.value.split('\n'))}
-                            />
-                        </li>
+            <form className='form-fields'>
+                <fieldset>
+                    <legend>Add a new Project!</legend>
+                    <li>
+                        <label>Title:</label>
+                        <input type='text' placeholder="Project Title"
+                        value={title}
+                        onChange={ (e) => setTitle(e.target.value) }
+                        />
+                    </li>
+                    <li>
+                        <label>Github:</label>
+                        <input type='url' placeholder="Github Link"
+                        value={attachments}
+                        onChange={ (e) => setAttachments(e.target.value) }
+                        />
+                    </li>
+                    <li className='jotnote-editor'>
+                        <label>Jotnotes:</label>
+                        <textarea type='text' placeholder="Add up to 5 jotnotes!"
+                        rows='5'
+                        value={description}
+                        onChange={ (e) => setDescription(e.target.value)}
+                        />
+                    </li>
 
-                        <li>
-                            <button className="new-project-button"
-                            onClick={handleNewProject}>Add Project</button>
-                            {error && <div className="error">{error}</div>}
-                        </li>
-                    </fieldset>
-                </form>
-            </div>
+                    <li>
+                        <button className="new-project-button"
+                        onClick={handleNewProject}>Add Project</button>
+                        {error && <div className="error">{error}</div>}
+                    </li>
+                </fieldset>
+            </form>
         </div>
     )
 }
