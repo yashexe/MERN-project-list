@@ -10,7 +10,6 @@ const NewProject = () => {
     const [error, setError] = useState(null)
     const {dispatch} = useProjectContext()
 
-
     const handleNewProject = async (e) => {
         e.preventDefault()
 

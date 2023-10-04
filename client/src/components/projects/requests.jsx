@@ -4,7 +4,6 @@ import trashCan from '../../assets/trashCan.png'
 import editIcon from '../../assets/editIcon.png'
 
 const Requests = ( {project} ) => {
-
     const { dispatch} = useProjectContext()
 
     const handleDelete = async () => {
@@ -17,8 +16,8 @@ const Requests = ( {project} ) => {
 
     return (
         <div className='request-container'>
-            <img src={editIcon} alt='Edit' className='edit' 
-            onClick={handleDelete} />
+            <img src={editIcon} alt='Edit' className='edit' />
+
             <img src={trashCan} alt='Delete' className='trashcan'
                 onClick={handleDelete} />
         </div>

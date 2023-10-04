@@ -1,16 +1,13 @@
 import { useState } from 'react';
 import {Link} from 'react-router-dom'
 
-import NewProject from '../forms/newProject';
-
-const NavigationBar = () => {
-    const [popupVisible, setPopupVisible] = useState(false);
+const NavigationBar = ( { toggleNewProject } ) => {
     const [button,setButton] = useState('+')
+    
     const togglePopup = () => {
-        setPopupVisible(!popupVisible)
-        setButton( popupVisible ? '+':'\u2212')
+        toggleNewProject();
+        setButton( button === '+' ? '\u2212':'+')
     }
-
     return (
         <header>
             <div className="header-container">
@@ -22,7 +19,7 @@ const NavigationBar = () => {
                 <Link className="nav">
                     <div className='new-project' onClick={togglePopup}>
                         {button}
-                    </div>{popupVisible && (<NewProject/>)}
+                    </div>
                 </Link>
             </div>
         </header>

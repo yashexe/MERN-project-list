@@ -1,9 +1,11 @@
-import { useEffect } from "react"
+import { useEffect} from "react"
 import { useProjectContext } from '../hooks/useProjectsContext'
 
 import ProjectInfo from '../components/projects/projectInfo'
 
-const Home = () => {
+import NewProject from "../components/forms/newProject";
+
+const Home = ({ newProjectVisible }) => {
     const { projects, dispatch } = useProjectContext();
 
     useEffect(() => {
@@ -24,6 +26,7 @@ const Home = () => {
 
     return (
         <div className="home">
+            {newProjectVisible && <NewProject />}
             <div className="projects">
                 {projects && projects.map((project) => (
                     <ProjectInfo

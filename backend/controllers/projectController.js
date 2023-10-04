@@ -1,9 +1,6 @@
 const mongoose = require('mongoose')
 const Project = require('../models/projectModel')
 
-// for future, try findByIdAndDelete()
-// experiment with try catch instead of if statements
-
 const getAllProjects = async (req,res) => {
     const allProjects = await Project.find({}).sort({createdAt: -1})
 
