@@ -4,8 +4,8 @@ import {Link} from 'react-router-dom'
 const NavigationBar = ( { toggleNewProject } ) => {
     const [button,setButton] = useState('+')
     
-    const togglePopup = () => {
-        toggleNewProject();
+    const toggleNewProjectForm = () => {
+        toggleNewProject()
         setButton( button === '+' ? '\u2212':'+')
     }
     return (
@@ -17,7 +17,7 @@ const NavigationBar = ( { toggleNewProject } ) => {
                     </p>
                 </Link>
                 <Link className="nav">
-                    <div className='new-project' onClick={togglePopup}>
+                    <div className='new-project' onClick={toggleNewProjectForm}>
                         {button}
                     </div>
                 </Link>

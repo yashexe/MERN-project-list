@@ -10,11 +10,10 @@ const Attachment = ( {project} ) => {
         event.stopPropagation()
 
         const githubIconProjects = projects.map( p => {
-            if (p._id === id) {
-                return {
-                    ...p,
-                    githubIcon: p.githubIcon === githubWhite ? githubBlack : githubWhite,
-                }
+            if (p._id === id) return {
+                ...p,
+                githubIcon:
+                    p.githubIcon === githubWhite ? githubBlack : githubWhite
             }
             return p
         })
@@ -26,16 +25,18 @@ const Attachment = ( {project} ) => {
 
     return (
         <a className="github-icon-container" 
-            href={project.attachments}
-            target='_blank' rel="noopener noreferrer"
-            onClick={ (event) => handleGithubIcon(event, project._id) }
-            onMouseEnter={ (event) => handleGithubIcon(event, project._id) }
-            onMouseLeave={ (event) => handleGithubIcon(event, project._id) }>
-
-            <img className="github-icon"
-                src={project.githubIcon === githubWhite ? githubBlack : githubWhite}
-                alt="github">
-            </img>
+          href={project.attachments}
+          target='_blank'
+          rel="noopener noreferrer"
+          onClick={ event => handleGithubIcon(event, project._id) }
+          onMouseEnter={ event => handleGithubIcon(event, project._id) }
+          onMouseLeave={ event => handleGithubIcon(event, project._id) }
+        >
+            <img
+              className="github-icon"
+              src={project.githubIcon === githubWhite ? githubBlack : githubWhite}
+              alt="github"
+            />
         </a>
     )
 }

@@ -7,11 +7,11 @@ import Home from './pages/home'
 
 function App() {
 
-  const [newProjectVisible, setNewProjectVisible] = useState(false);
+  const [newProjectVisible, setNewProjectVisible] = useState(false)
 
-  const toggleNewProject = () => {
-      setNewProjectVisible(!newProjectVisible);
-  }
+  const toggleNewProject = () => setNewProjectVisible(!newProjectVisible)
+  
+
 
   return (
     <div className="app">
@@ -19,9 +19,10 @@ function App() {
         <NavigationBar toggleNewProject={toggleNewProject} />
           <div className='pages'>
             <Routes>
-
-              <Route path='/' element= { <Home newProjectVisible={newProjectVisible} /> }/>
-            
+              <Route path='/' element= {
+                <Home
+                  newProjectVisible={newProjectVisible}/> }
+                />
             </Routes>
           </div>
       </BrowserRouter>

@@ -21,7 +21,6 @@ div,dl,dt,dd,ul,ol,li,h1,h2,Link,h3,h4,h5,h6,textarea,label,input,pre,p,blockquo
 
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  
 }
 header {
   background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
@@ -77,17 +76,20 @@ header {
   margin-left: 1%;
   padding: 1%;
   max-width:40%;
+  max-height: auto;
 
   border-radius: 20px;
   overflow: hidden;
   box-shadow: none;
-  transition: box-shadow 0.3s ease, background-color 0.3s ease;
-
+  transition: 
+   box-shadow 0.3s ease,
+   background-color 0.3s ease-out,
+   opcaity 0.3s ease;
+  
   &:hover {
-    box-shadow: 0 0 6px white;
+    box-shadow: 0 0 4px white;
     background-color: rgba(255, 255, 255, 0.15);
   }
-  
 }
 
 .project-header {
@@ -148,16 +150,21 @@ li.jotnotes {
 .request-container{
   display: flex;
   justify-content: flex-end;
-  
   padding-right: 2.5%;
 }
 .edit {
   cursor:pointer;
   height: 50px;
+  &:hover {
+    animation: shake infinite 0.5s linear;
+  }
 }
 .trashcan {
   cursor:pointer;
   padding-left: 5px;
+  &:hover {
+    animation: shake infinite 0.5s linear;
+  }
 }
 .popup {
   background-color: rgba(187, 178, 254, 0.25);

@@ -3,7 +3,7 @@ import { useState } from "react"
 import Attachment from "./attachment";
 import Requests from "./requests";
 
-const ProjectInfo = ({ project }) => {
+const ProjectInfo = ({ project, toggleEditProject}) => {
     const [request, setRequest] = useState(false)
 
     return (
@@ -27,7 +27,11 @@ const ProjectInfo = ({ project }) => {
                 </li>
             </ul>
             {request && (
-                <Requests key={project._id} project={project} />
+                <Requests
+                    key={project._id}
+                    project={project}
+                    toggleEditProject={toggleEditProject}
+                />
             )}
         </div>
     )
