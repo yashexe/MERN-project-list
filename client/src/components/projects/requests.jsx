@@ -22,10 +22,14 @@ const Requests = ( {project, toggleEditProject} ) => {
 
     return (
         <div className='request-container'>
-            <img src={editIcon} alt='Edit' className='edit'
-                onClick={ (event) =>toggleEditProjectForm(event,project)} />
-            <img src={trashCan} alt='Delete' className='trashcan'
-                onClick={handleDelete} />
+            <img src={editIcon} 
+              alt='Edit' className='edit'
+              onClick={ event =>toggleEditProjectForm(event,project)} 
+            />
+            <img src={trashCan}
+              alt='Delete' className='trashcan'
+              onClick={handleDelete}
+            />
         </div>
     )
 }

@@ -8,7 +8,7 @@ import EditProject from "../components/forms/editProject"
 
 const Home = ({ newProjectVisible }) => {
     const { projects, dispatch } = useProjectContext()
-    
+
     const [editProjectVisible, setEditProjectVisible] = useState(false)
     const [selectedProject, setSelectedProject] = useState(null)
 

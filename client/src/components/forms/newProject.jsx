@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useProjectContext } from "../../hooks/useProjectsContext"
+
 import isValidURL from "../../utils/urlValidation"
 import toArrayObjects from "../../utils/toArrayObjects"
 
@@ -48,25 +49,24 @@ const NewProject = () => {
                         <label>Title:</label>
                         <input type='text' placeholder="Project Title"
                         value={title}
-                        onChange={ (e) => setTitle(e.target.value) }
+                        onChange={ e => setTitle(e.target.value) }
                         />
                     </li>
                     <li>
                         <label>Github:</label>
                         <input type='url' placeholder="Github Link"
                         value={attachments}
-                        onChange={ (e) => setAttachments(e.target.value) }
+                        onChange={ e => setAttachments(e.target.value) }
                         />
                     </li>
                     <li className='jotnote-editor'>
                         <label>Jotnotes:</label>
                         <textarea type='text' placeholder="Add up to 5 jotnotes!"
-                        rows='5'
+                        rows='10'
                         value={description}
-                        onChange={ (e) => setDescription(e.target.value)}
+                        onChange={ e => setDescription(e.target.value)}
                         />
                     </li>
-
                     <li>
                         <button className="new-project-button"
                         onClick={handleNewProject}>Add Project</button>

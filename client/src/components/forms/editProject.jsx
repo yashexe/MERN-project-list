@@ -1,12 +1,14 @@
 import { useState } from "react"
 import { useProjectContext } from "../../hooks/useProjectsContext"
+
 import isValidURL from "../../utils/urlValidation"
 import toArrayObjects from "../../utils/toArrayObjects"
+import toString from "../../utils/toString"
 
 const EditProject = ({selectedProject}) => {
-    const [title,setTitle] = useState('')
-    const [attachments,setAttachments] = useState('')
-    const [description,setDescription] = useState([])
+    const [title,setTitle] = useState(selectedProject.title)
+    const [attachments,setAttachments] = useState(selectedProject.attachments)
+    const [description,setDescription] = useState(toString(selectedProject.jotnotes))
     const [error, setError] = useState(null)
     const {dispatch} = useProjectContext()
 
@@ -29,7 +31,6 @@ const EditProject = ({selectedProject}) => {
         const json = await response.json()
 
         if(!response.ok) setError(json.error)
-
         if(response.ok) {
             setError(null)
             setTitle('')
@@ -61,7 +62,7 @@ const EditProject = ({selectedProject}) => {
                     <li className='jotnote-editor'>
                         <label>Jotnotes:</label>
                         <textarea type='text' placeholder="Add up to 5 jotnotes!"
-                        rows='5'
+                        rows='10'
                         value={description}
                         onChange={ e => setDescription(e.target.value)}
                         />
